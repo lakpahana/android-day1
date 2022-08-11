@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.i("MyTag","MainActivity :onCreate")
         val greetingTextView = findViewById<TextView>(R.id.tvHello)
         val inputField = findViewById<EditText>(R.id.etName)
         val saveButton = findViewById<Button>(R.id.btnSave)
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
                 val message = "Welcome $enteredName"
                 greetingTextView.text = message
+                Log.i("MyTag","After displaying on the text text view ")
                 inputField.text.clear()
                 offersButton.visibility = View.VISIBLE
 
@@ -43,5 +46,35 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("USER", enteredName)
             startActivity(intent)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("MyTag","MainActivity :onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("MyTag","MainActivity :onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("MyTag","MainActivity :onPause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("MyTag","MainActivity :onDestroy")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("MyTag","MainActivity :onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("MyTag","MainActivity :onRestart")
     }
 }
